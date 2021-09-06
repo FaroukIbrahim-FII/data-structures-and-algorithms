@@ -138,16 +138,20 @@ const gruffaloCrumble = {
 };
 
 
+let result = [];
 const listFoods = (recipe) => {
-  let result = [];
-  let food= recipe.ingredients.splice(',');
+
+  let food1 =recipe;
+  let food= food1.ingredients.splice(',');
   for(let i=0; i<food.length; i++){
     let separate = [food[i]];
     let string = separate.toString();
     let newArr = string.split(' ');
     newArr.splice(0,2);
     let string2 = newArr.join(' ');
-    result.push(string2);
+    // let grocItem = string2.split(' ');
+    // console.log(string2);
+    result.push(string2)
   }
   return result;
 };
