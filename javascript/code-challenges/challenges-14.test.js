@@ -11,7 +11,8 @@ Write a function named screenForNames that takes in an array of strings and uses
 ------------------------------------------------------------------------------------------------ */
 
 const screenForNames = (arr) => {
-  // Solution code here...
+  let test = /^(Mr\.|Mrs\.|Ms\.|Dr\.).\w*$/;
+  return arr.filter((index) => index.match(test));
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -109,7 +110,7 @@ let biggerThanLuke = (arr) => {
     }
   });
   let finalArr = newArr.map(item => {
-    return item.name
+    return item.name;
   });
 
   return finalArr.join(' - ');
@@ -130,31 +131,9 @@ This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
 const sortBy = (property, arr) => {
-  if (property == 'price') {
-    arr.sort((a, b) => {
-      if (a.price > b.price) {
-        return 1;
-      } else if (a.price < b.price) {
-        return -1;
-      } else {
-        return 0;
-      }
-    }
-
-    );
-  } else if (property == 'name') {
-    arr.sort((a, b) => {
-      if (a.name > b.name) {
-        return 1;
-      } else if (a.name < b.name) {
-        return -1;
-      } else {
-        return 0;
-      }
-    }
-
-    );
-  }
+  arr.sort((first, second) => {
+    return (first[property] > second[property] ? 1 : -1);
+  });
   return arr;
 };
 
@@ -171,7 +150,7 @@ https://secure.com returns true because the URL is secure
 https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
-  // Solution code here...
+  return (/^(https:\/\/)/.test(url));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -194,7 +173,17 @@ Here is a sample board:
 ------------------------------------------------------------------------------------------------ */
 
 const detectTicTacToeWin = (board) => {
-  // Solution code here...
+  let first = board[0];
+  let second = board[1];
+  let third = board[2];
+  for (let i = 0; i < board.length; i++) {
+    if ( first[0] == second[1] == third[2] || first[0] == second[0] == third[0] || first[2] == second[1] == third[0] || first[0] == first[1] == first[2] || third[0] == third[1] == third[2] || first[1] == second[1] == third[1] || second[0] == second[1] == second[2] || first[2] == second[2] == third[2]) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  return board
 };
 
 /* ------------------------------------------------------------------------------------------------
