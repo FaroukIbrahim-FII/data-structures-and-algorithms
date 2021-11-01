@@ -24,4 +24,6 @@ To run your tests
 
 |Code Challenge |Link|
 |---------------|-----|
-array-reverse|[link](https://github.com/FaroukIbrahim-FII/data-structures-and-algorithms/blob/array-reverse/python/code_challenges/array-reverse/README.md)|
+|array-reverse|[link](https://github.com/FaroukIbrahim-FII/data-structures-and-algorithms/blob/array-reverse/python/code_challenges/array-reverse/README.md)|
+|array-reverse|[link](https://github.com/FaroukIbrahim-FII/data-structures-and-algorithms/blob/main/python/code_challenges/array-insert-shift/README.md)|
+
