@@ -1,34 +1,53 @@
-# Singly Linked List
+# Challenge Summary
 
-A task to add more methods to the linked list.
+Write three methods to append a new value to the end of a list, insert a new value after already-existing value, insert a new value before already-existing value.
 
-## Challenge
+## Whiteboard Process
 
-Write the following methods for the Linked List class:
-
-    append
-        arguments: new value
-        adds a new node with the given value to the end of the list
-    insert before
-        arguments: value, new value
-        adds a new node with the given new value immediately before the first node that has the value specified
-    insert after
-        arguments: value, new value
-        adds a new node with the given new value immediately after the first node that has the value specified
+![code](img/code-challenge-06.jpg)
 
 ## Approach & Efficiency
 
-The approach of classes and methods were emplemented in the task.
-
+The approach is to use methods only to achieve the requirements.
 Big O = O(n)
 
-## API
+## Solution
 
-append method:
-    this method is responsible to ad new node to the list at the end of it.
+[code link](linked_list_challenge.py)
 
-insert before method:
-    this method is used to add a new node with the given new value immediately before the first node that has the value specified.
+def append(self, new_value):
+        node = Node(new_value)
+        current = self.head
+        if current == None:
+            current = node
+        else:
+            while current.next != None:
+                current = current.next
+        current.next = node
 
-insert after method:
-    this method is made to add a new node with the given new value immediately after the first node that has the value specified.
+def insert_before(self, value, new_value):
+        node = Node(new_value)
+        current_node = self.head
+        if current_node.value is value:
+            node.next = self.head
+            self.head = node
+        else:
+            while current_node.next:
+                if current_node.next.value is value:
+                    node.next = current_node.next
+                    current_node.next = node
+                    break
+                current_node = current_node.next
+
+def insert_after(self, value, new_value):
+        current = self.head
+        while current is not None:
+            if current.value is value:
+                break
+            current = current.next
+        if current is None:
+            raise Exception(" there is no value ")
+        else:
+            new_node = Node(new_value)
+            new_node.next = current.next
+            current.next = new_node
