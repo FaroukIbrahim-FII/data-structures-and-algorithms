@@ -28,3 +28,4 @@ To run your tests
 |array-insert-shift|[link](https://github.com/FaroukIbrahim-FII/data-structures-and-algorithms/blob/main/python/code_challenges/array-insert-shift/README.md)|
 |array-binary-search|[link](https://github.com/FaroukIbrahim-FII/data-structures-and-algorithms/blob/array-binary-search/python/code_challenges/array-binary-search/README.md)|
 |linked-list|[link](python/linked_list/README.md)|
+|linked-list-insertions|[link](python/linked_list/README.md)|
