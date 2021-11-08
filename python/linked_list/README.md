@@ -1,10 +1,10 @@
 # Challenge Summary
 
-Write three methods to append a new value to the end of a list, insert a new value after already-existing value, insert a new value before already-existing value.
+write a method that gets the kth element of the list but from the end.
 
 ## Whiteboard Process
 
-![code](img/code-challenge-06.jpg)
+![code](img/code-challenge-07.jpg)
 
 ## Approach & Efficiency
 
@@ -15,39 +15,21 @@ Big O = O(n)
 
 [code link](linked_list_challenge.py)
 
-def append(self, new_value):
-        node = Node(new_value)
+def kth_from_end(self, k):
         current = self.head
-        if current == None:
-            current = node
-        else:
-            while current.next != None:
-                current = current.next
-        current.next = node
-
-def insert_before(self, value, new_value):
-        node = Node(new_value)
-        current_node = self.head
-        if current_node.value is value:
-            node.next = self.head
-            self.head = node
-        else:
-            while current_node.next:
-                if current_node.next.value is value:
-                    node.next = current_node.next
-                    current_node.next = node
-                    break
-                current_node = current_node.next
-
-def insert_after(self, value, new_value):
-        current = self.head
-        while current is not None:
-            if current.value is value:
-                break
+        list_length = 1
+        while current.next:
+            list_length += 1
             current = current.next
-        if current is None:
-            raise Exception(" there is no value ")
-        else:
-            new_node = Node(new_value)
-            new_node.next = current.next
-            current.next = new_node
+        current = self.head
+        if k < 0:
+            return 'negative value not allowed'
+        elif k >= list_length and k != 1:
+            return 'out of range'
+        elif k == 1 and list_length == 1:
+            return current.value
+        value = list_length-k-1
+        for i in range(list_length):
+            if i == value:
+                return current.value
+            current = current.next

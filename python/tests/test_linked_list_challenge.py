@@ -88,3 +88,46 @@ def test_insert_after():
     actual=List.__str__()
     expected='head -> x -> a -> y -> b -> z -> c -> None'
     assert actual == expected
+
+def test_k_out_of_range():
+    excepted='out of range'
+    List=LinkedList()
+    List.insert("x")
+    List.insert("y")
+    List.insert("z")
+    actual=List.kth_from_end(4)
+    assert excepted==actual
+
+def test_k_the_same_length():
+    excepted='out of range'
+    List=LinkedList()
+    List.insert("x")
+    List.insert("y")
+    List.insert("z")
+    actual=List.kth_from_end(3)
+    assert excepted==actual
+
+def test_k_negative_index():
+    excepted='negative value not allowed'
+    List=LinkedList()
+    List.insert("x")
+    List.insert("y")
+    List.insert("z")
+    actual=List.kth_from_end(-3)
+    assert excepted==actual
+
+def test_k_one_element():
+    excepted= 'x'
+    List=LinkedList()
+    List.insert("x")
+    actual=List.kth_from_end(1)
+    assert excepted==actual
+
+def test_k_happy_path():
+    excepted= 'y'
+    List=LinkedList()
+    List.insert("x")
+    List.insert("y")
+    List.insert("z")
+    actual=List.kth_from_end(1)
+    assert excepted==actual
