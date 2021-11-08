@@ -58,3 +58,33 @@ def test_the_whole_list():
     item3= linked_list.insert("x")
 
     assert linked_list.__str__() == "head -> x -> y -> z -> None"
+
+def test_append_one():
+    expected = "head -> x -> y -> None"
+    List = LinkedList()
+    node1 = List.insert("x")
+    node2 = List.append("y")
+    actual = List.__str__()
+    assert actual == expected
+
+
+def test_insert_before():
+    expected = "head -> y -> z -> x -> None"
+    List = LinkedList()
+    node1 = List.insert("x")
+    node1 = List.insert("y")
+    node2 = List.insert_before("x", "z")
+    actual = List.__str__()
+    assert actual == expected
+
+def test_insert_after():
+    List=LinkedList()
+    node1 = List.insert("z")
+    node1 = List.insert("y")
+    node1 = List.insert("x")
+    List.insert_after("x","a")
+    List.insert_after("y","b")
+    List.insert_after("z","c")
+    actual=List.__str__()
+    expected='head -> x -> a -> y -> b -> z -> c -> None'
+    assert actual == expected

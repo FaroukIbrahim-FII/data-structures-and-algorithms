@@ -1,48 +1,53 @@
-# Singly Linked List
+# Challenge Summary
 
-A task to create a linked list to get used to.
+Write three methods to append a new value to the end of a list, insert a new value after already-existing value, insert a new value before already-existing value.
 
-## Challenge
+## Whiteboard Process
 
-Node
-
-    Create a Node class that has properties for the value stored in the Node, and a pointer to the next Node.
-
-Linked List
-
-    Create a Linked List class
-    Within your Linked List class, include a head property.
-        Upon instantiation, an empty Linked List should be created.
-    The class should contain the following methods
-        insert
-            Arguments: value
-            Returns: nothing
-            Adds a new node with that value to the head of the list with an O(1) Time performance.
-        includes
-            Arguments: value
-            Returns: Boolean
-                Indicates whether that value exists as a Node’s value somewhere within the list.
-        to string
-            Arguments: none
-            Returns: a string representing all the values in the Linked List, formatted as:
-            "{ a } -> { b } -> { c } -> NULL"
-    Any exceptions or errors that come from your code should be semantic, capture-able errors. For example, rather than a default error thrown by your language, your code should raise/throw a custom, semantic error that describes what went wrong in calling the methods you wrote for this lab.
-    Be sure to follow your language/frameworks standard naming conventions (e.g. C# uses PascalCasing for all method and class names).
-
+![code](img/code-challenge-06.jpg)
 
 ## Approach & Efficiency
 
-The approach of classes and methods were emplemented in the task.
-
+The approach is to use methods only to achieve the requirements.
 Big O = O(n)
 
-## API
+## Solution
 
-Insert method:
-    this method is responsible to ad new node to the list.
+[code link](linked_list_challenge.py)
 
-Includes method:
-    this method is used to check if the node's value is already exited within the list or not.
+def append(self, new_value):
+        node = Node(new_value)
+        current = self.head
+        if current == None:
+            current = node
+        else:
+            while current.next != None:
+                current = current.next
+        current.next = node
 
-To sting method:
-    this method is made to convert the whole list to a more readable version of list in the way you want.
+def insert_before(self, value, new_value):
+        node = Node(new_value)
+        current_node = self.head
+        if current_node.value is value:
+            node.next = self.head
+            self.head = node
+        else:
+            while current_node.next:
+                if current_node.next.value is value:
+                    node.next = current_node.next
+                    current_node.next = node
+                    break
+                current_node = current_node.next
+
+def insert_after(self, value, new_value):
+        current = self.head
+        while current is not None:
+            if current.value is value:
+                break
+            current = current.next
+        if current is None:
+            raise Exception(" there is no value ")
+        else:
+            new_node = Node(new_value)
+            new_node.next = current.next
+            current.next = new_node
