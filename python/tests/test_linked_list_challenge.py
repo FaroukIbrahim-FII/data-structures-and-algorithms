@@ -1,5 +1,5 @@
 # from linked_list.linked_list import Node ,LinkedList
-from linked_list.linked_list_challenge import Node, LinkedList
+from linked_list.linked_list_challenge import Node, LinkedList, zip_Lists
 
 
 # Can successfully instantiate an empty linked list
@@ -121,6 +121,24 @@ def test_k_one_element():
     List=LinkedList()
     List.insert("x")
     actual=List.kth_from_end(1)
+    assert excepted==actual
+
+def test_zipped_lists():
+     # Arrange
+    excepted="head -> a -> x -> b -> y -> c -> z -> d -> None"
+     # Act
+    List1 =LinkedList()
+    List1.insert("a")
+    List1.append("b")
+    List1.append("c")
+    List1.append("d")
+
+    List2 =LinkedList()
+    List2.insert("x")
+    List2.append("y")
+    List2.append("z")
+    actual= zip_Lists(List1,List2)
+    #Assert
     assert excepted==actual
 
 def test_k_happy_path():
