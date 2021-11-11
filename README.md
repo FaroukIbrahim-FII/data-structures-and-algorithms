@@ -29,3 +29,5 @@ To run your tests
 |array-binary-search|[link](https://github.com/FaroukIbrahim-FII/data-structures-and-algorithms/blob/array-binary-search/python/code_challenges/array-binary-search/README.md)|
 |linked-list|[link](python/linked_list/README.md)|
 |linked-list-insertions|[link](python/linked_list/README.md)|
+|kth-value|[link](python/linked_list/README.md)|
+|zip-list|[link](python/linked_list/README.md)|
