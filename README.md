@@ -31,3 +31,5 @@ To run your tests
 |linked-list-insertions|[link](python/linked_list/README.md)|
 |kth-value|[link](python/linked_list/README.md)|
 |zip-list|[link](python/linked_list/README.md)|
+|stack-and-queue|[link](python/code_challenges/stack-and-queue/README.md)|
+|stack-and-queue|[link](python/code_challenges/stack-and-queue-pseudo/README.md)|
