@@ -32,4 +32,5 @@ To run your tests
 |kth-value|[link](python/linked_list/README.md)|
 |zip-list|[link](python/linked_list/README.md)|
 |stack-and-queue|[link](python/code_challenges/stack-and-queue/README.md)|
-|stack-and-queue|[link](python/code_challenges/stack-and-queue-pseudo/README.md)|
+|stack-and-queue-animal-shelter|[link](python/code_challenges/stack-and-queue-pseudo/README.md)|
+|stack_queue_brackets|[link](python/code_challenges/stack_queue_brackets/README.md)|
