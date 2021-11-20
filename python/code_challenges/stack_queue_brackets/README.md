@@ -7,7 +7,7 @@ Return: boolean
 
 ## Whiteboard Process
 
-![whiteboard](img/code-challenge-13.jpg)
+![whiteboard](img/code-challenge-13-edit.jpg)
 
 ## Approach & Efficiency
 
@@ -17,21 +17,23 @@ Big O = O(n)
 
 ## Solution
 
+    from stack_and_queue import Stack
+
     def validate_brackets(string):
         openning_brackets = ["{","[","("]
         closing_brackets = ["}","]",")"]
-        result_list = []
+        result_list = Stack()
 
         for i in string:
             if i in openning_brackets:
-                result_list.append(i)
+                result_list.push(i)
             elif i in closing_brackets:
                 bracket_index = closing_brackets.index(i)
-                if result_list and (openning_brackets[bracket_index] == result_list[len(result_list)-1]):
+                if result_list and (openning_brackets[bracket_index] == result_list.peek()):
                     result_list.pop()
                 else :
                     False
-        if not result_list :
+        if not result_list.top :
             return True
         else:
             return False
