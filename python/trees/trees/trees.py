@@ -81,6 +81,23 @@ class BinaryTree:
     walk(self.root)
     return items_list
 
+  def max_num(self):
+    if not self.root:
+        raise Exception("An Empty Tree")
+
+    self.max_element=self.root.data
+
+    def max_item(node):
+        if node.data>self.max_element:
+            self.max_element= node.data
+        if node.left:
+            max_item(node.left)
+        if node.right:
+            max_item(node.right)
+        return self.max_element
+
+    return max_item(self.root)
+
 class BinarySearchTree(BinaryTree):
     def __init__(self):
         super().__init__()

@@ -40,3 +40,41 @@ Big O= O(n)
 * pre order: to create a tree in the pre-order style. It would look like this: ["1", "2", "4", "3"], which may look a lot like the ordenary style and order.
 * in order: which look like this: ["4", "2", "1", "3"].
 * post order: ["4", "2", "3", "1"], looks a lot deformed and twisted.
+
+# Trees max
+
+# Challenge Summary
+
+Write the following method for the Binary Tree class
+
+    find maximum value
+        Arguments: none
+        Returns: number
+Find the maximum value stored in the tree. You can assume that the values stored in the Binary Tree will be numeric.
+
+## Whiteboard Process
+
+![whiteboard](img/code-challenge-16.jpg)
+
+## Approach & Efficiency
+
+The approach of creating a method was used.
+
+## Solution
+
+    def max_num(self):
+        if not self.root:
+            raise Exception("An Empty Tree")
+
+        self.max_element=self.root.data
+
+        def max_item(node):
+            if node.data>self.max_element:
+                self.max_element= node.data
+            if node.left:
+                max_item(node.left)
+            if node.right:
+                max_item(node.right)
+            return self.max_element
+
+        return max_item(self.root)
