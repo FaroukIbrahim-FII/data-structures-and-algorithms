@@ -34,3 +34,6 @@ To run your tests
 |stack-and-queue|[link](python/code_challenges/stack-and-queue/README.md)|
 |stack-and-queue-animal-shelter|[link](python/code_challenges/stack-and-queue-pseudo/README.md)|
 |stack_queue_brackets|[link](python/code_challenges/stack_queue_brackets/README.md)|
+|trees|[link](python/trees/trees/README.md)|
+|trees (max)|[link](python/trees/trees/README.md)|
+|trees (Breadth First)|[link](python/trees/trees/README.md)|
