@@ -1,4 +1,4 @@
-from trees import BinaryTree, Node , BinarySearchTree
+from trees import BinaryTree, Node , BinarySearchTree, breadth_first
 import pytest
 
 
@@ -129,21 +129,6 @@ def test_not_contains_value():
 ################### max number #########################
 # Happy path
 def test_max_num_happy_path():
-    # expected = 11
-    # tree = BinarySearchTree()
-    # tree.add(2)
-    # tree.add(7)
-    # tree.add(5)
-    # tree.add(2)
-    # tree.add(6)
-    # tree.add(9)
-    # tree.add(5)
-    # tree.add(11)
-    # tree.add(4)
-
-    # actual = tree.max_num()
-
-    # assert actual == expected
     tree = BinaryTree()
     node1 = Node(2)
     node2 = Node(7)
@@ -180,5 +165,33 @@ def test_max_num_from_only_one():
     tree = BinarySearchTree()
     tree.add(1)
     actual = tree.max_num()
+
+    assert actual == expected
+
+
+################### max number #########################
+
+def test_beardth_first_happy_path():
+    tree = BinaryTree()
+    node1 = Node(2)
+    node2 = Node(7)
+    node3 = Node(5)
+    node4 = Node(2)
+    node5 = Node(6)
+    node6 = Node(9)
+    node7 = Node(5)
+    node8 = Node(11)
+    node9 = Node(4)
+    node1.left = node2
+    node1.right = node3
+    node2.left = node4
+    node2.right = node5
+    node5.left = node7
+    node5.right = node8
+    node3.right = node6
+    node6.right = node9
+    tree.root = node1
+    expected = [2, 7, 5, 2, 6, 9, 5, 11, 4]
+    actual = breadth_first(tree)
 
     assert actual == expected

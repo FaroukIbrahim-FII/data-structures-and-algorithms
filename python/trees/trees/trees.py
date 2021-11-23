@@ -136,3 +136,44 @@ class BinarySearchTree(BinaryTree):
                     if not temp.right:
                         return False
                     temp = temp.right
+
+
+def breadth_first(tree):
+    breadth = Queue()
+    breadth.enqueue(tree.root)
+
+    list_of_items = []
+
+    while breadth.peek():
+        front = breadth.dequeue()
+        list_of_items += [front.data]
+
+        if front.left:
+            breadth.enqueue(front.left)
+
+        if front.right:
+            breadth.enqueue(front.right)
+
+    return list_of_items
+
+# if __name__ == '__main__':
+    tree = BinaryTree()
+    node1 = Node(2)
+    node2 = Node(7)
+    node3 = Node(5)
+    node4 = Node(2)
+    node5 = Node(6)
+    node6 = Node(9)
+    node7 = Node(5)
+    node8 = Node(11)
+    node9 = Node(4)
+    node1.left = node2
+    node1.right = node3
+    node2.left = node4
+    node2.right = node5
+    node5.left = node7
+    node5.right = node8
+    node3.right = node6
+    node6.right = node9
+    tree.root = node1
+    print(breadth_first(tree))
