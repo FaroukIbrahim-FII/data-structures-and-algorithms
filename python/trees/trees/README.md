@@ -1,4 +1,47 @@
-*Please find below each code challenge, in the tree section, details. Code challenge 15, 16 and 17.*
+*Please find below each code challenge, in the tree section, details. Code challenge 15, 16, 17 and 18.*
+
+**////////////////////////Code Challenge 18///////////////**
+# Breadth First (challenge 17)
+
+# Challenge Summary
+
+    Write a function called fizz buzz tree
+    Arguments: k-ary tree
+    Return: new k-ary tree
+
+## Whiteboard Process
+
+![whiteboard](img/code-challenge-18.jpg)
+
+## Approach & Efficiency
+
+The approach of creating a function was used.
+
+## Solution
+
+    def tree_fizz_buzz(tree):
+        def fizz_buzz(node):
+
+            if not node.data % 5 and not node.data % 3 :
+                return "FizzBuzz"
+            elif not node.data % 3 :
+                return "Fizz"
+            elif not node.data % 5 :
+                return "Buzz"
+            else :
+                return str(node.data)
+
+    queue = Queue()
+    queue.enqueue(tree.root)
+
+    while queue.peek():
+      front = queue.dequeue()
+      front.data = fizz_buzz(front)
+
+      for child in front.child:
+        queue.enqueue(child)
+
+    return tree
 
 **////////////////////////Code Challenge 17///////////////**
 # Breadth First (challenge 17)

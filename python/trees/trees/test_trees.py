@@ -1,4 +1,4 @@
-from trees import BinaryTree, Node , BinarySearchTree, breadth_first
+from trees import BinaryTree, Node , BinarySearchTree, breadth_first, tree_fizz_buzz, k_ary_list_gen
 import pytest
 
 
@@ -169,7 +169,7 @@ def test_max_num_from_only_one():
     assert actual == expected
 
 
-################### max number #########################
+################## max number #########################
 
 def test_beardth_first_happy_path():
     tree = BinaryTree()
@@ -194,4 +194,28 @@ def test_beardth_first_happy_path():
     expected = [2, 7, 5, 2, 6, 9, 5, 11, 4]
     actual = breadth_first(tree)
 
+    assert actual == expected
+
+################### fizz buzz #########################
+def test_fizz_buzz():
+    expected = ['4', 'Fizz', 'FizzBuzz', 'Buzz', '8', 'Fizz', '13']
+    tree = BinaryTree()
+    a_node = Node(4)
+    b_node = Node(9)
+    c_node = Node(30)
+    d_node = Node(5)
+    e_node = Node(8)
+    f_node = Node(99)
+    g_node = Node(13)
+    a_node.child.append( b_node)
+    a_node.child.append( c_node)
+    a_node.child.append( d_node)
+    b_node.child.append( e_node)
+    b_node.child.append( f_node)
+    c_node.child.append( g_node)
+    # Add Root node to tree
+    tree.root = a_node
+    new_tree = tree_fizz_buzz(tree)
+    # print( k_ary_bfs(new_tree))
+    actual = k_ary_list_gen(new_tree)
     assert actual == expected
