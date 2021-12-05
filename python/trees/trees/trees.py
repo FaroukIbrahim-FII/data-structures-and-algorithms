@@ -158,43 +158,43 @@ def breadth_first(tree):
     return items
 
 
-def tree_fizz_buzz(tree):
-    def fizz_buzz(node):
+# def tree_fizz_buzz(tree):
+#     def fizz_buzz(node):
 
-        if not node.data % 5 and not node.data % 3 :
-            return "FizzBuzz"
-        elif not node.data % 3 :
-            return "Fizz"
-        elif not node.data % 5 :
-            return "Buzz"
-        else :
-            return str(node.data)
+#         if not node.data % 5 and not node.data % 3 :
+#             return "FizzBuzz"
+#         elif not node.data % 3 :
+#             return "Fizz"
+#         elif not node.data % 5 :
+#             return "Buzz"
+#         else :
+#             return str(node.data)
 
-    queue = Queue()
-    queue.enqueue(tree.root)
+#     queue = Queue()
+#     queue.enqueue(tree.root)
 
-    while queue.peek():
-      front = queue.dequeue()
-      front.data = fizz_buzz(front)
+#     while queue.peek():
+#       front = queue.dequeue()
+#       front.data = fizz_buzz(front)
 
-      for child in front.child:
-        queue.enqueue(child)
+#       for child in front.child:
+#         queue.enqueue(child)
 
-    return tree
+#     return tree
 
-# this is a list generator function for testing only
-def k_ary_list_gen(tree):
-        breadth = Queue()
-        breadth.enqueue(tree.root)
+# # this is a list generator function for testing only
+# def k_ary_list_gen(tree):
+#         breadth = Queue()
+#         breadth.enqueue(tree.root)
 
-        items = []
-        while breadth.peek():
-            front = breadth.dequeue()
-            items += [front.data]
-            if front.child:
-                for item in front.child:
-                    breadth.enqueue(item)
-        return items
+#         items = []
+#         while breadth.peek():
+#             front = breadth.dequeue()
+#             items += [front.data]
+#             if front.child:
+#                 for item in front.child:
+#                     breadth.enqueue(item)
+#         return items
 
 # if __name__ == '__main__':
     # tree = BinaryTree()

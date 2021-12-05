@@ -1,4 +1,5 @@
-from trees import BinaryTree, Node , BinarySearchTree, breadth_first, tree_fizz_buzz, k_ary_list_gen
+from trees import BinaryTree, Node , BinarySearchTree, breadth_first
+from fizz_buzz_trees import  fizz_buzz_tree, K_Ary_Tree, TreeNode
 import pytest
 
 
@@ -197,25 +198,14 @@ def test_beardth_first_happy_path():
     assert actual == expected
 
 ################### fizz buzz #########################
-def test_fizz_buzz():
-    expected = ['4', 'Fizz', 'FizzBuzz', 'Buzz', '8', 'Fizz', '13']
-    tree = BinaryTree()
-    a_node = Node(4)
-    b_node = Node(9)
-    c_node = Node(30)
-    d_node = Node(5)
-    e_node = Node(8)
-    f_node = Node(99)
-    g_node = Node(13)
-    a_node.child.append( b_node)
-    a_node.child.append( c_node)
-    a_node.child.append( d_node)
-    b_node.child.append( e_node)
-    b_node.child.append( f_node)
-    c_node.child.append( g_node)
-    # Add Root node to tree
-    tree.root = a_node
-    new_tree = tree_fizz_buzz(tree)
-    # print( k_ary_bfs(new_tree))
-    actual = k_ary_list_gen(new_tree)
-    assert actual == expected
+def test_fizz():
+    node4 = TreeNode(15)
+    node6 = TreeNode(6)
+    node5 = TreeNode(7)
+    node3 = TreeNode(4)
+    node2 = TreeNode(3, [node4, node5, node6])
+    node1 = TreeNode(1, [node2, node3])
+    new_tree = K_Ary_Tree(node1)
+    fizz_buzz_tree(new_tree)
+    assert new_tree.breadth_first() == ["1", "Fizz", "4", "Fizz_Buzz", "7", "Fizz"]
+

@@ -1,7 +1,7 @@
 *Please find below each code challenge, in the tree section, details. Code challenge 15, 16, 17 and 18.*
 
 **////////////////////////Code Challenge 18///////////////**
-# Breadth First (challenge 17)
+# Fizz Buzz (challenge 18)
 
 # Challenge Summary
 
@@ -11,7 +11,7 @@
 
 ## Whiteboard Process
 
-![whiteboard](img/code-challenge-18.jpg)
+![whiteboard](img/code-challenge-18-edit.jpg)
 
 ## Approach & Efficiency
 
@@ -19,29 +19,33 @@ The approach of creating a function was used.
 
 ## Solution
 
-    def tree_fizz_buzz(tree):
-        def fizz_buzz(node):
+    def fizz_buzz_tree(k_ary_tree : K_Ary_Tree):
 
-            if not node.data % 5 and not node.data % 3 :
-                return "FizzBuzz"
-            elif not node.data % 3 :
-                return "Fizz"
-            elif not node.data % 5 :
-                return "Buzz"
-            else :
-                return str(node.data)
+    def fizz_buzz(node):
+
+        if not node % 5 and not node % 3:
+            return "Fizz_Buzz"
+        elif not  node % 3 :
+            return "Fizz"
+        elif not node % 5:
+            return "Buzz"
+        else:
+            return str(node)
+
+
+    if not k_ary_tree.root:
+        return 'Empty Tree'
 
     queue = Queue()
-    queue.enqueue(tree.root)
+    queue.enqueue(k_ary_tree.root)
 
-    while queue.peek():
-      front = queue.dequeue()
-      front.data = fizz_buzz(front)
+    while not queue.isEmpty():
+        front=queue.dequeue()
+        front.data = fizz_buzz(front.data)
+        for child in front.children:
+            queue.enqueue(child)
 
-      for child in front.child:
-        queue.enqueue(child)
-
-    return tree
+    return k_ary_tree
 
 **////////////////////////Code Challenge 17///////////////**
 # Breadth First (challenge 17)
