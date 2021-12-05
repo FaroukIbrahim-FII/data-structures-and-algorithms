@@ -3,6 +3,7 @@ class Node:
     self.data = data
     self.left = left
     self.right = right
+    self.child = []
 
 class Queue:
   def __init__(self, collection=[]):
@@ -142,11 +143,11 @@ def breadth_first(tree):
     breadth = Queue()
     breadth.enqueue(tree.root)
 
-    list_of_items = []
+    items = []
 
     while breadth.peek():
         front = breadth.dequeue()
-        list_of_items += [front.data]
+        items += [front.data]
 
         if front.left:
             breadth.enqueue(front.left)
@@ -154,26 +155,65 @@ def breadth_first(tree):
         if front.right:
             breadth.enqueue(front.right)
 
-    return list_of_items
+    return items
+
+
+# def tree_fizz_buzz(tree):
+#     def fizz_buzz(node):
+
+#         if not node.data % 5 and not node.data % 3 :
+#             return "FizzBuzz"
+#         elif not node.data % 3 :
+#             return "Fizz"
+#         elif not node.data % 5 :
+#             return "Buzz"
+#         else :
+#             return str(node.data)
+
+#     queue = Queue()
+#     queue.enqueue(tree.root)
+
+#     while queue.peek():
+#       front = queue.dequeue()
+#       front.data = fizz_buzz(front)
+
+#       for child in front.child:
+#         queue.enqueue(child)
+
+#     return tree
+
+# # this is a list generator function for testing only
+# def k_ary_list_gen(tree):
+#         breadth = Queue()
+#         breadth.enqueue(tree.root)
+
+#         items = []
+#         while breadth.peek():
+#             front = breadth.dequeue()
+#             items += [front.data]
+#             if front.child:
+#                 for item in front.child:
+#                     breadth.enqueue(item)
+#         return items
 
 # if __name__ == '__main__':
-    tree = BinaryTree()
-    node1 = Node(2)
-    node2 = Node(7)
-    node3 = Node(5)
-    node4 = Node(2)
-    node5 = Node(6)
-    node6 = Node(9)
-    node7 = Node(5)
-    node8 = Node(11)
-    node9 = Node(4)
-    node1.left = node2
-    node1.right = node3
-    node2.left = node4
-    node2.right = node5
-    node5.left = node7
-    node5.right = node8
-    node3.right = node6
-    node6.right = node9
-    tree.root = node1
-    print(breadth_first(tree))
+    # tree = BinaryTree()
+    # node1 = Node(2)
+    # node2 = Node(7)
+    # node3 = Node(5)
+    # node4 = Node(2)
+    # node5 = Node(6)
+    # node6 = Node(9)
+    # node7 = Node(5)
+    # node8 = Node(11)
+    # node9 = Node(4)
+    # node1.left = node2
+    # node1.right = node3
+    # node2.left = node4
+    # node2.right = node5
+    # node5.left = node7
+    # node5.right = node8
+    # node3.right = node6
+    # node6.right = node9
+    # tree.root = node1
+    # print(breadth_first(tree))
