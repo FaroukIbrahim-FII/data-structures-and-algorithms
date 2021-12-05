@@ -79,12 +79,13 @@ def fizz_buzz_tree(k_ary_tree : K_Ary_Tree):
         else:
             return str(node)
 
+    new_tree = k_ary_tree
 
-    if not k_ary_tree.root:
+    if not new_tree.root:
         return 'Empty Tree'
 
     queue = Queue()
-    queue.enqueue(k_ary_tree.root)
+    queue.enqueue(new_tree.root)
 
     while not queue.isEmpty():
         front=queue.dequeue()
@@ -92,4 +93,4 @@ def fizz_buzz_tree(k_ary_tree : K_Ary_Tree):
         for child in front.children:
             queue.enqueue(child)
 
-    return k_ary_tree
+    return new_tree
