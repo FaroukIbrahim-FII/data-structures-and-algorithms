@@ -37,3 +37,4 @@ To run your tests
 |trees|[link](python/trees/trees/README.md)|
 |trees (max)|[link](python/trees/trees/README.md)|
 |trees (Breadth First)|[link](python/trees/trees/README.md)|
+|trees (k-ary-tree)|[link](python/trees/trees/README.md)|
