@@ -2,6 +2,26 @@
 
 In computing, a hash table is a data structure that implements an associative array abstract data type, a structure that can map keys to values. A hash table uses a hash function to compute an index, also called a hash code, into an array of buckets or slots, from which the desired value can be found.
 
+**##################### Challenge 31 ################**
+
+## Challenge Summary
+
+Find the first repeated word in a book.
+
+## Whiteboard Process
+
+**Not done yet**
+
+## Approach & Efficiency
+
+**Not done yet**
+
+## Solution
+
+**not done yet**
+
+**##################### Challenge 30 ###############**
+
 ## Challenge
 
 An implementation for a hashtable with its functions.

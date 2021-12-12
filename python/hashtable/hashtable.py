@@ -37,3 +37,6 @@ class HashTable:
                     return True
                 current = current.next
             return False
+
+def repeated_word(string: str) -> str:
+    pass
