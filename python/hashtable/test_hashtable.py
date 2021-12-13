@@ -35,7 +35,10 @@ def test_retrieving_value_within_a_hash_table_that_has_collision(hashtable):
     assert actual == expected
 
 def test_repeated_word():
-    pass
+    actual = repeated_word("Once upon a time, there was a brave princess who...")
+    expected = "a"
+    assert actual == expected
+
 
 
 ###########Pytest Fixture#############

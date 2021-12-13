@@ -1,4 +1,5 @@
 from linked_list import LinkedList
+from collections import Counter
 
 class HashTable:
     def __init__(self, size=1024):
@@ -38,5 +39,24 @@ class HashTable:
                 current = current.next
             return False
 
+
 def repeated_word(string: str) -> str:
-    pass
+    if not string:
+        return "there is no input"
+
+    # using realpython.com and GeeksforGeeks
+    # splited_string = list(string.split(" "))
+    # repeated = Counter(splited_string)
+    # for i in splited_string:
+    #     if(repeated[i] > 1):
+    #         return i
+
+    hashtabel = HashTable()
+    splited_string = string.split(" ")
+    for word in splited_string:
+        if hashtabel.get(str(word)):
+            return word
+        else:
+            hashtabel.add(word, word)
+
+    return "there is no repeated word"
