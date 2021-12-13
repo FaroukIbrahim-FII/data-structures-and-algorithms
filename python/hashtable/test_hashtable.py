@@ -1,4 +1,4 @@
-from hashtable import HashTable
+from hashtable import HashTable, repeated_word
 import pytest
 
 
@@ -33,6 +33,12 @@ def test_retrieving_value_within_a_hash_table_that_has_collision(hashtable):
     hashtable.add("FII","55")
     actual = hashtable.get("FII")
     assert actual == expected
+
+def test_repeated_word():
+    actual = repeated_word("Once upon a time, there was a brave princess who...")
+    expected = "a"
+    assert actual == expected
+
 
 
 ###########Pytest Fixture#############
