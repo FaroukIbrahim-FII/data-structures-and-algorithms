@@ -1,4 +1,4 @@
-from trees import BinaryTree, Node
+from linked_list import LinkedList
 from collections import Counter
 
 class HashTable:
@@ -12,42 +12,15 @@ class HashTable:
     def add(self, key, val):
         ind = self.custom_hash(key)
         if not self.__buckets[ind]:
-          self.__buckets[ind] = BinaryTree()
+          self.__buckets[ind] = LinkedList()
         new_val = [key,val]
-        node = Node(new_val)
-        tree_root = self.__buckets[ind].root
-        if not tree_root:
-            tree_root = node
-        pos_node = tree_root
-        while tree_root:
-            prev_pos_node = pos_node
-            if not prev_pos_node.left or not prev_pos_node.right:
-                pos_node = pos_node.left
-                if not pos_node:
-                    pos_node = node
-                elif pos_node:
-                    pos_node = pos_node.right
-                    if not pos_node:
-                        pos_node = node
-                    else:
-                        pos_node = pos_node.left
-                        continue
-                if not prev_pos_node.left:
-                    prev_pos_node = prev_pos_node.left
-                elif not prev_pos_node.right:
-                    prev_pos_node = prev_pos_node.right
-
-                if prev_pos_node.left and prev_pos_node.right:
-                    prev_pos_node = prev_pos_node.left
-                    ################ need to re-create it with a recursion ################
-
-
+        self.__buckets[ind].insert(new_val)
 
     def get(self, key):
       ind = self.custom_hash(key)
       if self.__buckets[ind]:
-        binary_tree = self.__buckets[ind]
-        current = binary_tree.root
+        linked_list = self.__buckets[ind]
+        current = linked_list.head
         while current:
           if current.val[0] == key:
             return current.val[1]
@@ -58,8 +31,8 @@ class HashTable:
     def contains(self, key):
         ind = self.custom_hash(key)
         if self.__buckets[ind]:
-            binary_tree = self.__buckets[ind]
-            current = binary_tree.root
+            linked_list = self.__buckets[ind]
+            current = linked_list.head
             while current:
                 if current.val[0] == key:
                     return True
