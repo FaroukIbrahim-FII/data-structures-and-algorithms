@@ -1,68 +1,24 @@
 from graph import Graph, Vertex
-import pytest
 
 
-def test_add_node():
+def test_node_can_be_successfully_added_to_the_graph():
   graph = Graph()
-  expected = "test"
-  actual = graph.add_node('test').value
+  expected = "fffffffffffff"
+  actual = graph.add_node('fffffffffffff').value
   assert actual == expected
 
-def test_size_empty():
 
-    graph = Graph()
+# A collection of all nodes can be properly retrieved from the graph
 
-    expected = 0
-
-    actual = graph.size()
-
-    assert actual == expected
-
-
-def test_size():
-
-    graph = Graph()
-
-    graph.add_node('spam')
-
-    expected = 1
-
-    actual = graph.size()
-
-    assert actual == expected
-
-
-def test_add_edge_interloper_start():
-
-    graph = Graph()
-
-    start = Vertex('start')
-
-    end = graph.add_node('end')
-
-    with pytest.raises(KeyError):
-        graph.add_edge(start, end)
-
-
-def test_add_edge_interloper_end():
-
-    graph = Graph()
-
-    end = Vertex('end')
-
-    start = graph.add_node('start')
-
-    with pytest.raises(KeyError):
-        graph.add_edge(start, end)
 def test_get_nodes():
 
     graph = Graph()
 
-    banana = graph.add_node('banana')
+    fii = graph.add_node('FII')
 
-    apple = graph.add_node('apple')
+    ibrahim = graph.add_node('ibrahim')
 
-    loner = Vertex('loner')
+    node = Vertex('node')
 
     expected = 2
 
@@ -71,22 +27,52 @@ def test_get_nodes():
     assert actual == expected
 
 
+# All appropriate neighbors can be retrieved from the graph
+# Neighbors are returned with the weight between nodes included
+# An edge can be successfully added to the graph
 def test_get_neighbors():
 
     graph = Graph()
 
-    banana = graph.add_node('banana')
+    fii = graph.add_node('FII')
 
-    apple = graph.add_node('apple')
+    ibrahim = graph.add_node('ibrahim')
 
-    graph.add_edge(apple, banana, 44)
+    graph.add_edge(fii, ibrahim, 27)
 
-    neighbors = graph.get_neighbors(apple)
+    neighbors = graph.get_neighbors(fii)
 
     assert len(neighbors) == 1
 
     neighbor_edge = neighbors[0]
 
-    assert neighbor_edge.vertex.value == 'banana'
+    assert neighbor_edge.vertex.value == 'ibrahim'
 
-    assert neighbor_edge.weight == 44
+    assert neighbor_edge.weight == 27
+
+
+# The proper size is returned, representing the number of nodes in the graph
+# A graph with only one node and edge can be properly returned
+def test_size():
+
+    graph = Graph()
+
+    graph.add_node('one')
+
+    expected = 1
+
+    actual = graph.size()
+
+    assert actual == expected
+
+
+# An empty graph properly returns null
+def test_empty():
+
+    graph = Graph()
+
+    expected = 0
+
+    actual = len(graph.get_nodes())
+
+    assert actual == expected

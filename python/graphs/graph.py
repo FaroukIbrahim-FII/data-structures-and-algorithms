@@ -50,6 +50,8 @@ class Graph:
 
 
   def get_nodes(self):
+    if self.__adj_list == []:
+        return "null"
     return self.__adj_list.keys()
 
 
