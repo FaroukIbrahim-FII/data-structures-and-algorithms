@@ -76,3 +76,20 @@ def test_empty():
     actual = len(graph.get_nodes())
 
     assert actual == expected
+
+def test_bfs():
+    graph = Graph()
+
+    apple = graph.add_node('apple')
+    cherry = graph.add_node('cherry')
+    orange = graph.add_node('orange')
+    banana = graph.add_node('banana')
+
+    graph.add_edge(apple,banana)
+    graph.add_edge(orange,banana)
+    graph.add_edge(cherry,orange)
+    graph.add_edge(banana,cherry)
+
+    expected = 'apple ,banana ,cherry ,orange ,'
+    actual = graph.bfs(apple)
+    assert actual == expected

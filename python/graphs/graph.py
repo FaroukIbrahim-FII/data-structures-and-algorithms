@@ -1,84 +1,86 @@
 from collections import deque
 
-class Queue:
-  def __init__(self):
-    self.dq = deque()
-
-  def enqueue(self, value):
-    self.dq.append(value)
-
-  def dequeue(self):
-    return self.dq.pop(0)
-
-  def __len__(self):
-    return len(self.dq)
-
-
 
 class Vertex:
   def __init__(self, value):
     self.value = value
 
+class Queue:
+  def __init__(self, collection=[]):
+    self.data = collection
+
+  def peek(self):
+    if len(self.data):
+      return True
+    return False
+
+  def enqueue(self,item):
+    self.data.append(item)
+
+  def dequeue(self):
+    return self.data.pop(0)
+
+class Stack:
+  def __init__(self):
+    self.dq = deque()
+
+  def push(self, value):
+    self.dq.append(value)
+
+  def pop(self):
+    self.dq.pop()
+
 class Edge:
-  def __init__(self,vertex, weight):
+  def __init__(self, vertex, weight):
     self.vertex = vertex
     self.weight = weight
 
 class Graph:
-  def __init__(self):
-    self.__adj_list = {}
+    def __init__(self):
+        self.__adjacency_list = {}
 
+    def add_node(self, value):
+        v = Vertex(value)
+        self.__adjacency_list[v] = []
+        return v
 
-  def add_node(self, value):
-    node = Vertex(value)
-    self.__adj_list[node] = []
-    return node
+    def size(self):
+        return len(self.__adjacency_list)
 
+    def add_edge(self, start_vertex, end_vertex, weight=0):
+        if start_vertex not in self.__adjacency_list:
+            raise KeyError("Start Vertex not found in graph")
 
-  def add_edge(self, start_vertex, end_vertex, weight=0):
-    if start_vertex not in self.__adj_list:
-      raise KeyError("Start Vertex is not found")
-    if end_vertex not in self.__adj_list:
-      raise KeyError("Start Vertex is not found")
-    edge = Edge(end_vertex, weight)
-    self.__adj_list[start_vertex].append(edge)
+        if end_vertex not in self.__adjacency_list:
+            raise KeyError("End Vertex not found in graph")
 
+        edge = Edge(end_vertex, weight)
+        self.__adjacency_list[start_vertex].append(edge)
 
-  def get_neighbors(self, vertex):
-    return self.__adj_list.get(vertex, [])
+    def get_nodes(self):
+        return self.__adjacency_list.keys()
 
+    def get_neighbors(self, vertex):
+        return self.__adjacency_list.get(vertex, [])
 
+    def bfs(self, start_vertex):
+        queue = Queue()
+        visited = set()
+        final_result = ''
+        queue.enqueue(start_vertex)
+        visited.add(start_vertex)
 
-  def get_nodes(self):
-    if self.__adj_list == []:
-        return "null"
-    return self.__adj_list.keys()
+        while queue.peek():
+            current_vertex = queue.dequeue()
+            final_result += f"{current_vertex.value} ,"
+            neighbors = self.get_neighbors(current_vertex)
 
+            for edge in neighbors:
+                neighbor =  edge.vertex
 
-  def size(self):
-    return len(self.__adj_list)
+                if neighbor not in visited:
+                    visited.add(neighbor)
+                    queue.enqueue(neighbor)
 
+        return final_result
 
-  def bfs(self, start_vertex):
-    queue = Queue()
-    result = []
-    visited = set()
-
-    queue.enqueue(start_vertex)
-    visited.add(start_vertex)
-    result.append(start_vertex)
-
-    while len(queue):
-      current_vertex = queue.dqueue()
-
-      neighbors = self.get_neighbors(current_vertex)
-
-      for edge in neighbors:
-        neighbor = edge.vertex
-
-        if neighbor not in visited:
-          queue.enqueue(neighbor)
-          visited.add(neighbor)
-          result.append(neighbor)
-
-    return result
