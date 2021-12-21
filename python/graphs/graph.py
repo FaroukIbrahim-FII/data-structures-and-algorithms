@@ -84,6 +84,19 @@ class Graph:
 
         return final_result
 
+    def depth_first(self ,node):
+        vertesies = [node.value]
+
+        def rec(vertex):
+            edge =self.__adjacency_list[vertex]
+            for v in edge:
+                ver = v.vertex.value
+                if ver not in vertesies:
+                    vertesies.append(ver)
+                    rec(v.vertex)
+        rec(node)
+        return vertesies
+
 
 def business_trip(graph:Graph ,city_names: list) -> str:
     total_cost = 0
