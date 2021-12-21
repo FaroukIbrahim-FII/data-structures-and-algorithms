@@ -2,6 +2,58 @@
 
 In computer science, a graph is an abstract data type that is meant to implement the undirected graph and directed graph concepts from the field of graph theory within mathematics.
 
+**############# Code Challenge 37 #############**
+
+## Challenge Summary
+
+Given a business trip itinerary, and an Alaska Airlines route map, is the trip possible with direct flights? If so, how much will the total trip cost be?
+
+* Write a function called business trip
+* Arguments: graph, array of city names
+* Return: cost or null
+
+### Whiteboard Process
+
+![whiteboard](img/code-challenge-37.jpg)
+
+### Approach & Efficiency
+
+The approach of using a function were used.
+
+Big O:
+
+* Time: O(n^2)
+* Space: O(n)
+
+### Solution
+
+     def business_trip(graph ,city_names):
+    total_cost = 0
+    def rec(city_names):
+        nonlocal total_cost
+        city = city_names.pop(0)
+        cities = graph.get_neighbors(city)
+        vertex = [city.vertex for city in cities]
+        city_list =[]
+        for city in cities:
+          city_one = city.vertex
+          city_list.append(city_one.value)
+        for city in city_names:
+            if city.value not in city_list:
+                return "False, $0"
+        for city in cities:
+            if city_names[0] not in vertex:
+                return "False, $0"
+            if city.vertex in city_names:
+                total_cost += city.weight
+                if len(city_names)>1 :
+                    rec(city_names)
+    rec(city_names)
+    if not total_cost:
+        return "False, $0"
+    res = f"True, ${total_cost}"
+    return res
+
 **############# Code Challenge 36 #############**
 
 ## Challenge Summary

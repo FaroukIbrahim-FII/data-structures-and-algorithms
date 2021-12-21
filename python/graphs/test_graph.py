@@ -1,4 +1,4 @@
-from graph import Graph, Vertex
+from graph import Graph, Vertex, business_trip
 
 
 def test_node_can_be_successfully_added_to_the_graph():
@@ -93,3 +93,34 @@ def test_bfs():
     expected = 'apple ,banana ,cherry ,orange ,'
     actual = graph.bfs(apple)
     assert actual == expected
+
+
+def test_business_trip():
+
+    graph = Graph()
+
+    new_york = graph.add_node('new_york')
+    london = graph.add_node('london')
+    amman = graph.add_node('amman')
+    paris = graph.add_node('paris')
+    naboo = graph.add_node('Naboo')
+    narnia = graph.add_node('Narnia')
+
+    graph.add_edge(new_york,london,150)
+    graph.add_edge(london,new_york,150)
+    graph.add_edge(new_york,amman,82)
+    graph.add_edge(amman,new_york,82)
+
+    graph.add_edge(london,amman,99)
+    graph.add_edge(amman,london,99)
+    graph.add_edge(london,paris,42)
+    graph.add_edge(paris,london,42)
+
+    # Happy Path
+    assert "True, $82" == business_trip(graph,[amman, new_york])
+
+    # Edge Case
+    assert "False, $0" == business_trip(graph,[london,paris, naboo])
+
+    # expected failure
+    assert "False, $0" == business_trip(graph,[narnia, london,naboo])
