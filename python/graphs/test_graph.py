@@ -124,3 +124,29 @@ def test_business_trip():
 
     # expected failure
     assert "False, $0" == business_trip(graph,[narnia, london,naboo])
+
+
+def test_breadth_first():
+    graph = Graph()
+
+    a = graph.add_node('F')
+    b = graph.add_node('A')
+    c = graph.add_node('R')
+    d = graph.add_node('O')
+    e = graph.add_node('U')
+    f = graph.add_node('K')
+
+    graph.add_edge(a,b)
+    graph.add_edge(a,d)
+
+    graph.add_edge(b,c)
+    graph.add_edge(b,d)
+
+    graph.add_edge(d,e)
+    graph.add_edge(d,f)
+
+
+
+    expected = ['F', 'A', 'R', 'O', 'U', 'K']
+    actual = graph.depth_first(a)
+    assert actual == expected
